@@ -1,0 +1,34 @@
+name: Staff Info
+author: Staartvin
+website: http://dev.bukkit.org/server-mods/staff-info/
+main: me.Staartvin.Staff_Info.Staff_Info
+version: 1.0
+description: Show all your staff members in a handy way!
+softdepend: [Vault]
+permissions:
+    staffinfo.groups.view:
+        description: Allows a player to view a list of groups.
+        default: true
+    staffinfo.groups.info:
+        description: Allows a player to view a groups info.
+        default: true
+    staffinfo.groups.create:
+        description: Allows a player to create a group.
+        default: op
+    staffinfo.groups.delete:
+        description: Allows a player to delete a group.
+        default: op
+    staffinfo.reload:
+        description: Allows a player to reload Staff Info.
+        default: op
+    staffinfo.reload.config:
+        description: Allows a player to reload Staff Info's config.
+        default: op
+    staffinfo.help:
+        description: Allows a player to view the help page of Staff Info.
+        default: op
+commands:
+    staff:
+      description: Master command of Staff Info.
+      usage: /<command> <argument>
+      aliases: [si, staffinfo]
