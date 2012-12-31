@@ -2,7 +2,7 @@ name: Staff Info
 author: Staartvin
 website: http://dev.bukkit.org/server-mods/staff-info/
 main: me.Staartvin.Staff_Info.Staff_Info
-version: 1.0
+version: 1.1
 description: Show all your staff members in a handy way!
 softdepend: [Vault]
 permissions:
