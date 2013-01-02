@@ -27,6 +27,9 @@ permissions:
     staffinfo.help:
         description: Allows a player to view the help page of Staff Info.
         default: op
+    staffinfo.run.autoasign:
+        description: Allows a player to force an auto asign permissions check.
+        default: op
 commands:
     staff:
       description: Master command of Staff Info.

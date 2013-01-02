@@ -100,6 +100,15 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
 				showHelpPages(pageNumber, sender);
 				return true;
 			}
+			else if (args[0].equalsIgnoreCase("run")) {
+				if (args[1].equalsIgnoreCase("autoasign")) {
+					if (!hasPermission("staffinfo.run.autoasign", sender)) return true;
+					sender.sendMessage(ChatColor.GREEN + "Auto asign permissions check successfully forced!");
+					plugin.log.debug("Forced a permissions check by " + sender.getName());
+			        plugin.vaultClass.permHandler.autoAsignGroups();
+			        return true;
+				}
+			}
 		} else if (args.length == 3) {
 			if (args[0].equalsIgnoreCase("add")) {
 				plugin.groups.addPlayerToGroup(args[2], args[1], sender);
@@ -142,6 +151,7 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
 			sender.sendMessage(ChatColor.GOLD + "/staff remove <playername> <groupname>" + ChatColor.BLUE + " --- Removes a player from the member list of a group");
 			sender.sendMessage(ChatColor.GOLD + "/staff reload" + ChatColor.BLUE + " --- Reloads Staff Info");
 			sender.sendMessage(ChatColor.GOLD + "/staff reload config" + ChatColor.BLUE + " --- Reloads Staff Info's config");
+			sender.sendMessage(ChatColor.GOLD + "/staff run autoasign" + ChatColor.BLUE + " --- Force an auto asign permissions check");
 			sender.sendMessage(ChatColor.GOLD + "Page " + ChatColor.BLUE + page + ChatColor.GOLD + " of " + maxpages);
 		} else {
 			sender.sendMessage(ChatColor.BLUE + "-------------------[" + ChatColor.GOLD + "Staff Info" + ChatColor.BLUE + "]------------------------");
