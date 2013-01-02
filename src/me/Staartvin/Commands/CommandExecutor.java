@@ -42,25 +42,7 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
 			}
 			else if (args[0].equalsIgnoreCase("help")) {
 				if (!hasPermission("staffinfo.help", sender)) return true;
-				
-				 sender.sendMessage(ChatColor.BLUE + "-------------------[" + ChatColor.GOLD + "Staff Info" + ChatColor.BLUE + "]------------------------");
-				 sender.sendMessage(ChatColor.GOLD + "/staff" + ChatColor.BLUE + " --- Shows info about Staff Info");
-				 sender.sendMessage(ChatColor.GOLD + "/staff help" + ChatColor.BLUE + " --- Shows a list of commands");
-				 sender.sendMessage(ChatColor.GOLD + "/staff groups" + ChatColor.BLUE + " --- Shows a list of groups");
-				 sender.sendMessage(ChatColor.GOLD + "/staff <groupname>" + ChatColor.BLUE + " --- Shows a short description of a group");
-				 sender.sendMessage(ChatColor.GOLD + "/staff info <groupname>" + ChatColor.BLUE + " --- Shows a full description of a group");
-				 sender.sendMessage(ChatColor.GOLD + "/staff create <groupname>" + ChatColor.BLUE + " --- Creates a new group");
-				 sender.sendMessage(ChatColor.GOLD + "/staff delete <groupname>" + ChatColor.BLUE + " --- Deletes a group");
-				 sender.sendMessage(ChatColor.GOLD + "/staff edit <groupname> <variable> <variableresult>" + ChatColor.BLUE + " --- Edit a variable of a group");
-				 sender.sendMessage(ChatColor.GOLD + "/staff add <playername> <groupname>" + ChatColor.BLUE + " --- Adds a player to the member list of a group");
-				 sender.sendMessage(ChatColor.GOLD + "/staff remove <playername> <groupname>" + ChatColor.BLUE + " --- Removes a player from the member list of a group");
-				 sender.sendMessage(ChatColor.GOLD + "/staff reload" + ChatColor.BLUE + " --- Reloads Staff Info");
-				 sender.sendMessage(ChatColor.GOLD + "/staff reload config" + ChatColor.BLUE + " --- Reloads Staff Info's config");
-				 
-				 return true;
-			}
-			else if (plugin.groups.searchInGroups(args[0]) != null) {
-				plugin.groups.showShortGroupInfo(args[0], sender);
+				showHelpPages(1, sender);
 				return true;
 			}
 			else if (args[0].equalsIgnoreCase("reload")) {
@@ -69,6 +51,10 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
 					plugin.reload();
 					sender.sendMessage(ChatColor.GREEN + "Staff Info has been reloaded!");
 					return true;
+			}
+			else {
+				plugin.groups.showShortGroupInfo(args[0], sender);
+				return true;
 			}
 		} else if (args.length == 2) {
 			if (args[0].equalsIgnoreCase("info")) {
@@ -102,6 +88,18 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
 					return true;
 				}
 			}
+			else if (args[0].equalsIgnoreCase("help")) {
+				if (!hasPermission("staffinfo.help", sender)) return true;
+				int pageNumber = 1;
+				try {
+					pageNumber = Integer.parseInt(args[1]);
+				} catch(Exception e) {
+					sender.sendMessage(ChatColor.RED + args[1] + " is not a number!");
+					return true;
+				}
+				showHelpPages(pageNumber, sender);
+				return true;
+			}
 		} else if (args.length == 3) {
 			if (args[0].equalsIgnoreCase("add")) {
 				plugin.groups.addPlayerToGroup(args[2], args[1], sender);
@@ -122,5 +120,40 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
 		sender.sendMessage(ChatColor.RED + "Command not recognised!");
 		sender.sendMessage(ChatColor.GOLD + "Type /staff help to get a list of commands.");
 		return true;
+	}
+	
+	protected void showHelpPages(int page, CommandSender sender) {
+		int maxpages = 2;
+		
+		if (page == 1) {
+			sender.sendMessage(ChatColor.BLUE + "-------------------[" + ChatColor.GOLD + "Staff Info" + ChatColor.BLUE + "]------------------------");
+			sender.sendMessage(ChatColor.GOLD + "/staff" + ChatColor.BLUE + " --- Shows info about Staff Info");
+			sender.sendMessage(ChatColor.GOLD + "/staff help <page>" + ChatColor.BLUE + " --- Shows a list of commands");
+			sender.sendMessage(ChatColor.GOLD + "/staff groups" + ChatColor.BLUE + " --- Shows a list of groups");
+			sender.sendMessage(ChatColor.GOLD + "/staff <groupname>" + ChatColor.BLUE + " --- Shows a short description of a group");
+		    sender.sendMessage(ChatColor.GOLD + "/staff info <groupname>" + ChatColor.BLUE + " --- Shows a full description of a group");
+			sender.sendMessage(ChatColor.GOLD + "/staff create <groupname>" + ChatColor.BLUE + " --- Creates a new group");
+			sender.sendMessage(ChatColor.GOLD + "/staff delete <groupname>" + ChatColor.BLUE + " --- Deletes a group");
+			sender.sendMessage(ChatColor.GOLD + "Page " + ChatColor.BLUE + page + ChatColor.GOLD + " of " + maxpages);
+		} else if (page == 2) {
+			sender.sendMessage(ChatColor.BLUE + "-------------------[" + ChatColor.GOLD + "Staff Info" + ChatColor.BLUE + "]------------------------");
+			sender.sendMessage(ChatColor.GOLD + "/staff edit <groupname> <variable> <variableresult>" + ChatColor.BLUE + " --- Edit a variable of a group");
+			sender.sendMessage(ChatColor.GOLD + "/staff add <playername> <groupname>" + ChatColor.BLUE + " --- Adds a player to the member list of a group");
+			sender.sendMessage(ChatColor.GOLD + "/staff remove <playername> <groupname>" + ChatColor.BLUE + " --- Removes a player from the member list of a group");
+			sender.sendMessage(ChatColor.GOLD + "/staff reload" + ChatColor.BLUE + " --- Reloads Staff Info");
+			sender.sendMessage(ChatColor.GOLD + "/staff reload config" + ChatColor.BLUE + " --- Reloads Staff Info's config");
+			sender.sendMessage(ChatColor.GOLD + "Page " + ChatColor.BLUE + page + ChatColor.GOLD + " of " + maxpages);
+		} else {
+			sender.sendMessage(ChatColor.BLUE + "-------------------[" + ChatColor.GOLD + "Staff Info" + ChatColor.BLUE + "]------------------------");
+			sender.sendMessage(ChatColor.GOLD + "/staff" + ChatColor.BLUE + " --- Shows info about Staff Info");
+			sender.sendMessage(ChatColor.GOLD + "/staff help" + ChatColor.BLUE + " --- Shows a list of commands");
+			sender.sendMessage(ChatColor.GOLD + "/staff groups" + ChatColor.BLUE + " --- Shows a list of groups");
+			sender.sendMessage(ChatColor.GOLD + "/staff <groupname>" + ChatColor.BLUE + " --- Shows a short description of a group");
+		    sender.sendMessage(ChatColor.GOLD + "/staff info <groupname>" + ChatColor.BLUE + " --- Shows a full description of a group");
+			sender.sendMessage(ChatColor.GOLD + "/staff create <groupname>" + ChatColor.BLUE + " --- Creates a new group");
+			sender.sendMessage(ChatColor.GOLD + "/staff delete <groupname>" + ChatColor.BLUE + " --- Deletes a group");
+			sender.sendMessage(ChatColor.GOLD + "Page " + ChatColor.BLUE + page + ChatColor.GOLD + " of " + maxpages);
+		}
+		 
 	}
 }
