@@ -30,24 +30,24 @@ public class Groups {
 	}
 	
 	public void showShortGroupInfo(String group, CommandSender sender) {
-		String groupname = searchInGroups(group);
 		
-		if (groupname == null) {
-			sender.sendMessage(ChatColor.RED + "Group is not defined!"); 
+		if (searchInGroups(group) == null) {
+			sender.sendMessage(ChatColor.RED + "Group '" + group + "' is not defined!"); 
 			return;
 		}
+		String groupname = searchInGroups(group);
 		 sender.sendMessage(ChatColor.BLUE + "------------------[" + ChatColor.GOLD + groupname + " Info" + ChatColor.BLUE + "]");
 		 sender.sendMessage(ChatColor.GOLD + "Description: " + ChatColor.BLUE + plugin.config.replaceColours(plugin.getConfig().getString("Groups." + groupname + ".shortdescription")));
 		 sender.sendMessage(ChatColor.BLUE + "If you want to know more about " + groupname + ", type " + ChatColor.GOLD + "/staff info " + groupname);
 	}
 	
 	public void showLongGroupInfo(String group, CommandSender sender) {
-		String groupname = searchInGroups(group);
 		
-		if (groupname == null) {
-			sender.sendMessage(ChatColor.RED + groupname + " is not defined!"); 
+		if (searchInGroups(group) == null) {
+			sender.sendMessage(ChatColor.RED + "Group '" + group + "' is not defined!"); 
 			return;
 		}
+		String groupname = searchInGroups(group);
 		if (!plugin.getConfig().getBoolean("Groups." + groupname + ".visible")) {
 			sender.sendMessage(ChatColor.RED + groupname + " is not visible!");
 			return;
