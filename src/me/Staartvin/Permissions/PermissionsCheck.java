@@ -18,7 +18,7 @@ public class PermissionsCheck {
 		    @Override  
 		    public void run() {
 		        plugin.log.debug("Running permissions check..");
-		        plugin.vaultclass.permHandler.autoAsignGroups();
+		        plugin.vaultClass.permHandler.autoAsignGroups();
 		    }
 		}, 200L, 12000L);
 	}
