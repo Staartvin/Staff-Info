@@ -11,7 +11,7 @@ import me.Staartvin.Permissions.PermissionsHandler;
 public class VaultClass {
 	
 	Staff_Info plugin;
-	PermissionsHandler permHandler;
+	public PermissionsHandler permHandler;
 	
 	public VaultClass (Staff_Info instance) {
 		plugin = instance;
@@ -54,5 +54,13 @@ public class VaultClass {
 	
 	public void setSuffix(Player player, String suffix) {
 		chat.setPlayerSuffix(player, suffix);
+	}
+	
+	public void removePermission(String player, String world, String permission) {
+		VaultClass.permission.playerRemove(world, player, permission);
+	}
+	
+	public void addPermission(String player, String world, String permission) {
+		VaultClass.permission.playerAdd(world, player, permission);
 	}
 }
