@@ -102,11 +102,6 @@ public class Config {
 		plugin.getConfig().options().copyDefaults(true);
 		plugin.saveConfig();
 		
-		plugin.log.debug("Moderator example group setup");
-		plugin.log.debug("Admins example group setup");
-		plugin.log.debug("Owners example group setup");
-		plugin.log.debug("Options setup");
-		
 		plugin.log.logVerbose("Config.yml has been loaded!");
 		plugin.log.debug("Config.yml has been setup and loaded.");
     }
