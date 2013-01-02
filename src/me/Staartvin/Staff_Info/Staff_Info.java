@@ -15,7 +15,7 @@ public class Staff_Info extends JavaPlugin {
 	public me.Staartvin.Commands.CommandExecutor CommandExecutor = new me.Staartvin.Commands.CommandExecutor(this);
 	public Config config;
 	public Vault vault;
-	public VaultClass vaultclass = new VaultClass(this);
+	public VaultClass vaultClass = new VaultClass(this);
 	public PermissionsCheck permCheck = new PermissionsCheck(this);
 	
 	public void onEnable() {
@@ -31,7 +31,7 @@ public class Staff_Info extends JavaPlugin {
 		}
 		else {
 			vault = new Vault();
-			vaultclass.setupVault();
+			vaultClass.setupVault();
 			log.logVerbose("Hooked into Vault successfully!");
 		}
 		
