@@ -44,14 +44,15 @@ public class Staff_Info extends JavaPlugin {
 		reloadConfig();
 		saveConfig();
 		permCheck.stopCheck();
+		getServer().getScheduler().cancelAllTasks();
 		
 		log.logNormal("Staff Info v" + getDescription().getVersion() + " has been disabled!");
 	}
 	
     public void reload() {
     	log.debug("Reload triggered");
-    	onDisable();
-    	onEnable();
+    	getServer().getPluginManager().disablePlugin(this);
+		getServer().getPluginManager().enablePlugin(this);
     	log.logNormal("Reloaded!");
     }
 }
