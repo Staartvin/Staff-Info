@@ -1,9 +1,9 @@
 package me.Staartvin.Staff_Info;
 
-import me.Staartvin.Files.Config;
-import me.Staartvin.Groups.Groups;
-import me.Staartvin.Permissions.PermissionsCheck;
-import me.Staartvin.Permissions.VaultClass;
+import me.Staartvin.Staff_Info.Files.Config;
+import me.Staartvin.Staff_Info.Groups.Groups;
+import me.Staartvin.Staff_Info.Permissions.PermissionsCheck;
+import me.Staartvin.Staff_Info.Permissions.VaultClass;
 import net.milkbowl.vault.Vault;
 
 import org.bukkit.plugin.java.JavaPlugin;
@@ -12,7 +12,7 @@ public class Staff_Info extends JavaPlugin {
 
 	public Logger log = new Logger(this);
 	public Groups groups;
-	public me.Staartvin.Commands.CommandExecutor CommandExecutor = new me.Staartvin.Commands.CommandExecutor(this);
+	public me.Staartvin.Staff_Info.Commands.CommandExecutor CommandExecutor = new me.Staartvin.Staff_Info.Commands.CommandExecutor(this);
 	public Config config;
 	public Vault vault;
 	public VaultClass vaultClass = new VaultClass(this);

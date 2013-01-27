@@ -1,4 +1,4 @@
-package me.Staartvin.Groups;
+package me.Staartvin.Staff_Info.Groups;
 
 import me.Staartvin.Staff_Info.Staff_Info;
 

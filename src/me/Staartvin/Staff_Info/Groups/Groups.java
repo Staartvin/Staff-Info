@@ -1,4 +1,4 @@
-package me.Staartvin.Groups;
+package me.Staartvin.Staff_Info.Groups;
 
 import java.util.ArrayList;
 import java.util.Arrays;

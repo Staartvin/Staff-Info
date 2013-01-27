@@ -1,4 +1,4 @@
-package me.Staartvin.Permissions;
+package me.Staartvin.Staff_Info.Permissions;
 
 import java.util.List;
 

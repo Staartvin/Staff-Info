@@ -1,12 +1,12 @@
-package me.Staartvin.Permissions;
+package me.Staartvin.Staff_Info.Permissions;
 
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 import me.Staartvin.Staff_Info.Staff_Info;
+import me.Staartvin.Staff_Info.Permissions.PermissionsHandler;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
-import me.Staartvin.Permissions.PermissionsHandler;
 
 public class VaultClass {
 	

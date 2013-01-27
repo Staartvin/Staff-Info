@@ -1,4 +1,4 @@
-package me.Staartvin.Commands;
+package me.Staartvin.Staff_Info.Commands;
 
 import java.util.List;
 
